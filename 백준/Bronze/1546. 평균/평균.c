@@ -5,9 +5,9 @@ int main(void){
     scanf("%d", &N);
     for(i=0; i<N; i++){
         scanf("%le", &score[i]);
+        avg += score[i];
         if(score[i]>max) max = score[i];
     }
-    for(i=0; i<N; i++) avg += score[i]/max*100;
-    printf("%f", avg/N);
+    printf("%f", (avg/max*100)/N);
     return 0;
 }
