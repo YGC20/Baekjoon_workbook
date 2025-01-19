@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <string.h>
 int main(void){
     int i=0, count=0;
     char croatian[101] = {0};
