@@ -6,21 +6,13 @@ void gasStation(void){
     int gasPrice[N], gasLoad[N-1];
     for(int i=0;i<N-1;i++) cin>>gasLoad[i];
     for(int i=0;i<N;i++) cin>>gasPrice[i];
-    int index=0, results=0, lastIndex=0, load=0;
-    while(true){
-        if(index==N) break;
-        load+=gasLoad[index];
-        if(gasPrice[index]>=gasPrice[index+1]){
-            results+=gasPrice[lastIndex]*load;
-            load=0;
-            index++;
-        }
-        else {
-            lastIndex=index;
-            index++;
-        }
+    long long totalCost=0;
+    int minPrice = gasPrice[0];
+    for(int i=0;i<N-1;i++){
+        if(gasPrice[i]<minPrice) minPrice=gasPrice[i];
+        totalCost+=(long long)minPrice*gasLoad[i];
     }
-    cout<<results<<"\n";
+    cout<<totalCost<<"\n";
 }
 int main(void){
     ios::sync_with_stdio(false);
