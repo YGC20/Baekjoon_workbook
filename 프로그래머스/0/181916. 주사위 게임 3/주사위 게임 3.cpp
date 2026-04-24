@@ -1,33 +1,44 @@
 #include <string>
 #include <vector>
 #include <algorithm>
-
 using namespace std;
 
 int solution(int a, int b, int c, int d) {
-    vector<int> nums(7);
-    nums[a]++; nums[b]++; nums[c]++; nums[d]++;
+    vector<int> dice(7, 0);
+    dice[a]++, dice[b]++, dice[c]++, dice[d]++;
     
-    vector<vector<int>> freq(5);
-    for(int i=1; i<7; ++i) {
-        freq[nums[i]].push_back(i);
-    }
+    int cnt = 0;
+    vector<pair<int,int>> num;
+    for(int i=0; i<7; i++)
+        if(dice[i]!=0) {
+            cnt++;
+            num.push_back({i, dice[i]});
+        }
     
-    if(!freq[4].empty()) {
-        return (freq[4][0] * 1111);
+    sort(num.begin(), num.end(), [](const pair<int,int>& a, const pair<int,int>& b){ 
+        if(a.second==b.second) return a.first<b.first; return a.second>b.second;
+        });
+    if(cnt==4) {
+        return num[0].first;
     }
-    else if(!freq[3].empty()) {
-        return ((10 * freq[3][0] + freq[1][0]) * (10 * freq[3][0] + freq[1][0]));
+    else if(cnt==3) {
+        int q  = num[1].first;
+        int r  = num[2].first;
+        return q*r;
     }
-    else if(!freq[2].empty()) {
-        if(freq[2].size()!=2) {
-            return (freq[1][0] * freq[1][1]);
+    else if(cnt==2) {
+        if(num[0].second==3) {
+            int p = num[0].first;
+            int q = num[1].first;
+            return (10*p+q)*(10*p+q);
         }
         else {
-            return ((freq[2][1] + freq[2][0]) * (freq[2][1] - freq[2][0]));
+            int p = num[0].first;
+            int q = num[1].first;
+            return (p+q)*((p-q>0)?p-q:q-p);
         }
     }
-    else if(!freq[1].empty()) {
-        return (freq[1][0]);
+    else if(cnt==1) {
+        return 1111 * num[0].first;
     }
 }
