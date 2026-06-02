@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="JUNGOL_Study.vcxproj" />
+  <Project Path="JUNGOL_Study.vcxproj" Id="80b9a849-25f1-4131-bd0d-62e35e643c2d" />
 </Solution>
