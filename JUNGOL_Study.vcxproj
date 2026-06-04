@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="2572.c" />
     <ClCompile Include="2788.c" />
+    <ClCompile Include="coloredPapper_easy.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

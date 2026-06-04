@@ -3,7 +3,7 @@
 * 회전초밥 (2572)
 * 슬라이딩 기법 이용
 */
-#if 01
+#if 0
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
