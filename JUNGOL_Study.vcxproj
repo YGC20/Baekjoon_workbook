@@ -139,9 +139,12 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="1010.c" />
+    <ClCompile Include="1675.c" />
     <ClCompile Include="2572.c" />
     <ClCompile Include="2788.c" />
     <ClCompile Include="1674.c" />
+    <ClCompile Include="virus.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
