@@ -16,28 +16,27 @@ int main(void)
 	int* visited = (int*)calloc(d+1, sizeof(int));
 	if (nums == NULL || visited == NULL) return -1;
 
+	int cnt = 0;
 	for (int i = 0; i < N; ++i) {
 		(void)scanf("%d", &nums[i]);
 		nums[i + N] = nums[i];
-	}
-
-	int cnt = 0;
-	for (int i = 0; i < k; ++i) {
-		visited[nums[i]]++;
-		if (visited[nums[i]] == 1) cnt++;
+		if (i < k) {
+			visited[nums[i]]++;
+			if(visited[nums[i]]==1) cnt++;
+		}
 	}
 
 	int max = cnt;
-	for (int i = 1; i < (2 * N) - k; ++i) {
-		visited[nums[i - 1]]--;
-		if (visited[nums[i - 1]] == 0) cnt--;
+	for (int i = k;i < (N * 2);++i) {
+		visited[nums[i - k]]--;
+		if (visited[nums[i - k]] == 0) cnt--;
 		
-		visited[nums[i + (k-1)]]++;
-		if (visited[nums[i + (k-1)]] == 1) cnt++;
+		visited[nums[i]]++;
+		if (visited[nums[i]] == 1) cnt++;
 
 		if (max <= cnt) {
-			if (visited[c] == 0) cnt++;
 			max = cnt;
+			if (visited[c] == 0) max++;
 		}
 	}
 	printf("%d\n", max);
