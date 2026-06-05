@@ -11,23 +11,27 @@ int main(void)
 	int N; (void)scanf("%d", &N);
 	char whitePapper[101][101] = { 0 };
 	
+	int result = 0;
 	int sx, sy;
 	for (int i = 0;i < N; ++i) {
 		(void)scanf("%d %d", &sx, &sy);
 		for (int x = sx; x < (sx + 10); ++x) {
 			for (int y = sy; y < (sy + 10); ++y) {
 				whitePapper[x][y]++;
+				if (whitePapper[x][y] == 1) result++;
 			}
 		}
 	}
 
-	int cnt = 0;
+	/*int cnt = 0;
 	for (int i = 0;i < 101;++i) {
 		for (int j = 0;j < 101;++j) {
 			if (whitePapper[i][j] == 0) cnt++;
-		}
-	}
+			printf("%d", whitePapper[i][j]);
+		} printf("\n");
+	} printf("\n");
 	printf("%d\n", (101*101)-cnt);
+	printf("%d\n", result);*/
 	return 0;
 }
 #endif

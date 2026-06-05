@@ -141,9 +141,11 @@
   <ItemGroup>
     <ClCompile Include="1010.c" />
     <ClCompile Include="1675.c" />
+    <ClCompile Include="1676.c" />
     <ClCompile Include="2572.c" />
     <ClCompile Include="2788.c" />
     <ClCompile Include="1674.c" />
+    <ClCompile Include="safeZone.c" />
     <ClCompile Include="virus.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
