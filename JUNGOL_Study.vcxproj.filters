@@ -21,7 +21,25 @@
     <ClCompile Include="2572.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="coloredPapper_easy.c">
+    <ClCompile Include="1010.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1675.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1676.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="1674.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="safeZone.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="virus.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="cowBaseball.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
