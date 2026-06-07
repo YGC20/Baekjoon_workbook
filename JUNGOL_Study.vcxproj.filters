@@ -42,5 +42,11 @@
     <ClCompile Include="cowBaseball.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="pushArray.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="numSum.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

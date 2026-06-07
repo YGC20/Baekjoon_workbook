@@ -146,6 +146,8 @@
     <ClCompile Include="2788.c" />
     <ClCompile Include="1674.c" />
     <ClCompile Include="cowBaseball.c" />
+    <ClCompile Include="numSum.c" />
+    <ClCompile Include="pushArray.c" />
     <ClCompile Include="safeZone.c" />
     <ClCompile Include="virus.c" />
   </ItemGroup>
