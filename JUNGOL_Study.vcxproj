@@ -145,6 +145,7 @@
     <ClCompile Include="2572.c" />
     <ClCompile Include="2788.c" />
     <ClCompile Include="1674.c" />
+    <ClCompile Include="bookshelf2.cpp" />
     <ClCompile Include="cowBaseball.c" />
     <ClCompile Include="numSum.c" />
     <ClCompile Include="pushArray.c" />

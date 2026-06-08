@@ -1,7 +1,7 @@
 ﻿/**
 * 프로그래머스 : 연속된 수의 합
 */
-#if 01
+#if 0
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdbool.h>
