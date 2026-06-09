@@ -5,7 +5,7 @@
 15 7
 5 2
 */
-#if 01
+#if 00
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
