@@ -38,6 +38,12 @@ int main(void)
 			}
 		}
 	}
+
+	for (int i = 0;i < 101;++i) {
+		for (int j = 0;j < 101;++j) {
+			printf("%d", whitePapper[i][j]);
+		}printf("\n");
+	}printf("\n");
 	printf("%d\n", cnt);
 	return 0;
 }
