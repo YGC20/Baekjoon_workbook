@@ -54,5 +54,14 @@
     <ClCompile Include="editor_stk.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="carrRace.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="numbering.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="cheese.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

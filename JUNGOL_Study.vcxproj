@@ -147,6 +147,7 @@
     <ClCompile Include="1674.c" />
     <ClCompile Include="bookshelf2.cpp" />
     <ClCompile Include="carrRace.c" />
+    <ClCompile Include="cheese.c" />
     <ClCompile Include="cowBaseball.c" />
     <ClCompile Include="editor_stk.c" />
     <ClCompile Include="numbering.c" />
