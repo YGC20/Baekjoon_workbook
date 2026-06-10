@@ -149,6 +149,7 @@
     <ClCompile Include="carrRace.c" />
     <ClCompile Include="cowBaseball.c" />
     <ClCompile Include="editor_stk.c" />
+    <ClCompile Include="numbering.c" />
     <ClCompile Include="numSum.c" />
     <ClCompile Include="pushArray.c" />
     <ClCompile Include="safeZone.c" />
