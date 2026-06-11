@@ -154,6 +154,7 @@
     <ClCompile Include="numSum.c" />
     <ClCompile Include="pushArray.c" />
     <ClCompile Include="safeZone.c" />
+    <ClCompile Include="tsp.c" />
     <ClCompile Include="virus.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

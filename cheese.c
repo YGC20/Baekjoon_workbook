@@ -1,4 +1,7 @@
-﻿#if 01
+﻿/*
+* for문으로 hp증가를 설정하고 각 hp마다 최소 도착거리를 구해서 총합하는 방식으로 진행
+*/
+#if 0
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,7 +11,7 @@ int dx[4] = { 1,0,-1,0 };
 int dy[4] = { 0,-1,0,1 };
 
 typedef struct {
-	int x, y;
+	int x, y, dist;
 }Node;
 
 typedef struct {
@@ -39,22 +42,22 @@ Node dequeue(Queue* q)
 
 void bfs(uc** cm, uc** v, Queue* q, int H, int W, int* hp, int* time)
 {
-	int t = 0;
-	while (!is_empty(&q)) {
-		Node temp = dequeue(&q);
+	while (!is_empty(q)) {
+		Node temp = dequeue(q);
 		int qx = temp.x;
 		int qy = temp.y;
-		if ((cm[qx][qy] - '0') <= hp) hp++;
-		t++;
-		if (time > t) time = t;
+		int qdist = temp.dist;
+		if ((cm[qx][qy] - '0') <= *hp) (*hp)++;
 
 		for (int i = 0; i < 4; ++i) {
 			int nx = qx + dx[i];
 			int ny = qy + dy[i];
 
 			if (nx >= 0 && nx < H && ny >= 0 && ny < W) {
-				if (v[nx][ny] == 0 && (cm[nx][ny] - '0') <= hp) {
-					enqueue(&q, (Node) { nx, ny });
+				if (v[nx][ny] == 0 && (cm[nx][ny] == '.' || (cm[nx][ny] - '0') <= *hp)) {
+					v[nx][ny] = 1;
+					(*time)++;
+					enqueue(q, (Node) { nx, ny, qdist + 1 });
 				}
 			}
 		}
@@ -86,7 +89,7 @@ int main(void)
 	int hp = 1;
 	static Queue q;
 	init_queue(&q);
-	enqueue(&q, (Node){ startX, startY });
+	enqueue(&q, (Node){ startX, startY ,0 });
 
 	bfs(cheeseMap, visited, &q, H, W, &hp, &time);
 	printf("%d\n", time);
