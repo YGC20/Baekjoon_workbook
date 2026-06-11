@@ -63,5 +63,14 @@
     <ClCompile Include="cheese.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="pstDFS.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="hikingRoad.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="robot.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

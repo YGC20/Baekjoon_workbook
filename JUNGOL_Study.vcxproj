@@ -150,9 +150,12 @@
     <ClCompile Include="cheese.c" />
     <ClCompile Include="cowBaseball.c" />
     <ClCompile Include="editor_stk.c" />
+    <ClCompile Include="hikingRoad.cpp" />
     <ClCompile Include="numbering.c" />
     <ClCompile Include="numSum.c" />
+    <ClCompile Include="pstDFS.c" />
     <ClCompile Include="pushArray.c" />
+    <ClCompile Include="robot.cpp" />
     <ClCompile Include="safeZone.c" />
     <ClCompile Include="virus.c" />
   </ItemGroup>
