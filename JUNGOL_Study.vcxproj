@@ -139,14 +139,13 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="1010.c" />
     <ClCompile Include="1675.c" />
     <ClCompile Include="1676.c" />
     <ClCompile Include="2572.c" />
     <ClCompile Include="2788.c" />
     <ClCompile Include="1674.c" />
     <ClCompile Include="bookshelf2.cpp" />
-    <ClCompile Include="carrRace.c" />
+    <ClCompile Include="carRace.c" />
     <ClCompile Include="cheese.c" />
     <ClCompile Include="cowBaseball.c" />
     <ClCompile Include="editor_stk.c" />

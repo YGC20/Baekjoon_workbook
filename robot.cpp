@@ -1,4 +1,4 @@
-﻿#if 01
+﻿#if 0
 #include <iostream>
 #include <vector>
 #include <queue>
