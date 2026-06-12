@@ -33,13 +33,7 @@
     <ClCompile Include="pstDFS.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="hikingRoad.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="robot.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="tsp.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="1674.c">
@@ -73,6 +67,18 @@
       <Filter>소스 파일\completed</Filter>
     </ClCompile>
     <ClCompile Include="carRace.c">
+      <Filter>소스 파일\completed</Filter>
+    </ClCompile>
+    <ClCompile Include="hikingRoad.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="tsp_dfs.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="tsp_dp.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="tomato.c">
       <Filter>소스 파일\completed</Filter>
     </ClCompile>
   </ItemGroup>

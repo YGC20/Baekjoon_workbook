@@ -5,15 +5,16 @@
 15 7
 5 2
 */
-#if 00
+#if 0
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
+#define MAX 101
 
 int main(void)
 {
 	int N; (void)scanf("%d", &N);
-	unsigned char whitePapper[101][101] = { 0 };
+	unsigned char whitePapper[MAX][MAX] = { 0 };
 
 	int wpx, wpy;
 	for (int i = 0; i < N; ++i) {
@@ -25,10 +26,9 @@ int main(void)
 		}
 	}
 
-	int maxX = 0;
-	unsigned char lengthMapX[101][101] = { 0 };
-	for (int i = 0; i < 101; ++i) {
-		for (int j = 0; j < 101; ++j) {
+	unsigned char lengthMapX[MAX][MAX] = { 0 };
+	for (int i = 0; i < MAX; ++i) {
+		for (int j = 0; j < MAX; ++j) {
 			if (whitePapper[i][j] >= 1) {
 				if (i == 0) lengthMapX[i][j] = 1;
 				else lengthMapX[i][j] = lengthMapX[i - 1][j] + 1;
@@ -36,47 +36,36 @@ int main(void)
 			else {
 				lengthMapX[i][j] = 0;
 			}
-			if (lengthMapX[i][j] > maxX) maxX = lengthMapX[i][j];
 		}
 	}
-	int cntY = 0;
-	for (int j = 0; j < 101; ++j) {
-		for (int i = 0; i < 101; ++i) {
-			if (lengthMapX[i][j] == maxX) cntY++;
-		}
-	}
-	int box1 = maxX * cntY;
 
-	int maxY = 0;
-	unsigned char lengthMapY[101][101] = { 0 };
-	for (int j = 0; j < 101; ++j) {
-		for (int i = 0; i < 101; ++i) {
-			if (whitePapper[i][j] >= 1) {
-				if (i == 0) lengthMapY[i][j] = 1;
-				else lengthMapY[i][j] = lengthMapY[i][j - 1] + 1;
+	int maxBox = 0;
+	for (int j = 0; j < MAX; ++j) {
+		for (int i = 0; i < MAX; ++i) {
+			if (lengthMapX[i][j] >= 1) {
+				int width = 1;
+				for (int w = j - 1; w >= 0; --w) {
+					if (lengthMapX[i][w] < lengthMapX[i][j] || lengthMapX[i][w] == 0) break;
+					++width;
+				}
+				for (int w = j + 1; w < MAX; ++w) {
+					if (lengthMapX[i][w] < lengthMapX[i][j] || lengthMapX[i][w] == 0) break;
+					++width;
+				}
+				if (maxBox < (width * lengthMapX[i][j])) {
+					maxBox = width * lengthMapX[i][j];
+				}
 			}
-			else {
-				lengthMapY[i][j] = 0;
-			}
-			if (lengthMapY[i][j] > maxY) maxY = lengthMapY[i][j];
 		}
 	}
-	int cntX = 0;
-	for (int i = 0; i < 101; ++i) {
-		for (int j = 0; j < 101; ++j) {
-			if (lengthMapY[i][j] == maxY) cntX++;
-		}
-	}
-	int box2 = maxY * cntX;
-
-	printf("%d\n", (box1 > box2) ? box1 : box2);
+	printf("%d\n", maxBox);
 	return 0;
 }
 #endif
 
 /*
-	for (int x = 0; x < 101; ++x) {
-		for (int y = 0; y < 101; ++y) {
+	for (int x = 0; x < MAX; ++x) {
+		for (int y = 0; y < MAX; ++y) {
 			printf("%d", whitePapper[x][y]);
 		}printf("\n");
 	}printf("\n");
