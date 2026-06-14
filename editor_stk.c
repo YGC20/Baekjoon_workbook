@@ -4,44 +4,69 @@
 #include <stdlib.h>
 #include <string.h>
 
-char msg[100005] = { 0 };
-char tmsg[100005] = { 0 };
+#define MAX_N 200010
 
-int main(void)
+int N;
+int len = 0;
+char msg[MAX_N] = { 0 };
+char stk[MAX_N] = { 0 };
+
+void inputData(void)
 {
-	int N = 0;
-	char cmd;
 	(void)scanf("%s", msg);
 	(void)scanf("%d", &N);
-	(void)getchar();
-	
-	int mIdx = 0, tIdx = 0;
-	while (msg[mIdx] != '\0' && mIdx <= 100000) {
-		mIdx++;
-	}
+	while (getchar() != '\n');
+	len = strlen(msg);
+}
 
-	while (N--) {
-		(void)scanf("%c", &cmd);
-		(void)getchar();
-		if (cmd == 'L' && mIdx > 0) {
-			tmsg[tIdx++] = msg[--mIdx];
+void printData(void)
+{
+	for (int i = 0; i < 100; ++i) {
+		printf("%c", msg[i]);
+	} printf("\n");
+	for (int i = 0; i < 100; ++i) {
+		printf("%c", stk[i]);
+	} printf("\n");
+}
+
+void editor(void)
+{
+	int mIdx = len, sIdx = -1;
+	char command[10] = { 0 };
+	for (int i = 0; i < N; ++i) {
+		fgets(command, sizeof(command), stdin);
+		command[strcspn(command, "\r\n")] = 0;
+		char cmd = command[0];
+		if (cmd == 'L') {
+			if (mIdx > 0) {
+				stk[++sIdx] = msg[--mIdx];
+			}
 		}
-		else if (cmd == 'D' && tIdx > 0) {
-			msg[mIdx++] = tmsg[--tIdx];
+		else if (cmd == 'D') {
+			if (sIdx >= 0) {
+				msg[mIdx++] = stk[sIdx--];
+			}
 		}
-		else if (cmd == 'B' && mIdx > 0) {
-			msg[--mIdx] = '\0';
+		else if (cmd == 'B') {
+			if (mIdx > 0) {
+				msg[--mIdx] = 0;
+			}
 		}
 		else if (cmd == 'P') {
-			char ch;
-			(void)scanf("%c", &ch);
-			(void)getchar();
+			char ch = command[2];
 			msg[mIdx++] = ch;
 		}
 	}
-	for (int i = (tIdx-1); i >= 0; --i) {
-		msg[mIdx++] = tmsg[i];
-	} msg[mIdx] = '\0';
+	while (sIdx >= 0) {
+		msg[mIdx++] = stk[sIdx--];
+	}
+	msg[mIdx] = '\0';
+}
+
+int main(void)
+{
+	inputData();
+	editor();
 	printf("%s\n", msg);
 	return 0;
 }

@@ -152,11 +152,14 @@
     <ClCompile Include="hikingRoad.c" />
     <ClCompile Include="numbering.c" />
     <ClCompile Include="numSum.c" />
+    <ClCompile Include="n_queen.c" />
     <ClCompile Include="pstDFS.c" />
     <ClCompile Include="pushArray.c" />
-    <ClCompile Include="robot.cpp" />
+    <ClCompile Include="rmPipe.c" />
+    <ClCompile Include="robot.c" />
     <ClCompile Include="safeZone.c" />
-    <ClCompile Include="tomato.c" />
+    <ClCompile Include="tomatoH.c" />
+    <ClCompile Include="tomatoE.c" />
     <ClCompile Include="tsp_dfs.c" />
     <ClCompile Include="tsp_dp.c" />
     <ClCompile Include="virus.c" />
