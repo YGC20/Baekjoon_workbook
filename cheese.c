@@ -1,11 +1,13 @@
-﻿/*
-* for문으로 hp증가를 설정하고 각 hp마다 최소 도착거리를 구해서 총합하는 방식으로 진행
-*/
-#if 0
+﻿#if 0
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
+#define MAX_N (1000+5)
 typedef unsigned char uc;
+
+int H, W, N;
+uc cheeseMap[MAX_N][MAX_N] = { 0 };
+int visited[MAX_N][MAX_N] = { 0 };
 
 int dx[4] = { 1,0,-1,0 };
 int dy[4] = { 0,-1,0,1 };
@@ -14,86 +16,39 @@ typedef struct {
 	int x, y, dist;
 }Node;
 
-typedef struct {
-	int front;
-	int rear;
-	Node data[1000005];
-}Queue;
+int front = 0, rear = 0;
+Node que[MAX_N * MAX_N * 4] = { 0 };
 
-void init_queue(Queue *q)
+void enqueue(Node node)
 {
-	q->front = q->rear = -1;
+	que[rear++] = node;
 }
 
-int is_empty(Queue* q)
+Node dequeue(void)
 {
-	return q->front == q->rear;
+	return que[front++];
 }
 
-void enqueue(Queue* q, Node node)
+void inputData(void)
 {
-	q->data[++q->rear] = node;
-}
-
-Node dequeue(Queue* q)
-{
-	return q->data[++q->front];
-}
-
-void bfs(uc** cm, uc** v, Queue* q, int H, int W, int* hp, int* time)
-{
-	while (!is_empty(q)) {
-		Node temp = dequeue(q);
-		int qx = temp.x;
-		int qy = temp.y;
-		int qdist = temp.dist;
-		if ((cm[qx][qy] - '0') <= *hp) (*hp)++;
-
-		for (int i = 0; i < 4; ++i) {
-			int nx = qx + dx[i];
-			int ny = qy + dy[i];
-
-			if (nx >= 0 && nx < H && ny >= 0 && ny < W) {
-				if (v[nx][ny] == 0 && (cm[nx][ny] == '.' || (cm[nx][ny] - '0') <= *hp)) {
-					v[nx][ny] = 1;
-					(*time)++;
-					enqueue(q, (Node) { nx, ny, qdist + 1 });
-				}
-			}
+	(void)scanf("%d %d %d", &H, &W, &N);
+	char temp[MAX_N] = { 0 };
+	for (int h = 1; h <= H; ++h) {
+		(void)scanf("%s", temp + 1);
+		for (int w = 1; w <= W; ++w) {
+			cheeseMap[h][w] = temp[w];
 		}
 	}
+
+}
+
+void cheeseBFS(void)
+{
 }
 
 int main(void)
 {
-	int H, W, N; (void)scanf("%d %d %d", &H, &W, &N);
-	int startX = 0, startY = 0;
-	uc** cheeseMap = (uc**)calloc(H, sizeof(uc*));
-	uc** visited = (uc**)calloc(H, sizeof(uc*));
-	for (int x = 0; x < H; ++x) {
-		cheeseMap[x] = (uc*)calloc(W, sizeof(uc));
-		visited[x] = (uc*)calloc(W, sizeof(uc));
-		for (int y = 0; y < W; ++y) {
-			(void)scanf("%c", &cheeseMap[x][y]);
-			if (cheeseMap[x][y] == 'S') {
-				startX = x; startY = y;
-				visited[x][y] = 1;
-			}
-			if (cheeseMap[x][y] == 'X') {
-				visited[x][y] = 1;
-			}
-		}
-	}
-
-	int time = 1000005;
-	int hp = 1;
-	static Queue q;
-	init_queue(&q);
-	enqueue(&q, (Node){ startX, startY ,0 });
-
-	bfs(cheeseMap, visited, &q, H, W, &hp, &time);
-	printf("%d\n", time);
-
+	inputData();
 	return 0;
 }
 #endif

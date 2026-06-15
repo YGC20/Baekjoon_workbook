@@ -158,6 +158,7 @@
     <ClCompile Include="rmPipe.c" />
     <ClCompile Include="robot.c" />
     <ClCompile Include="safeZone.c" />
+    <ClCompile Include="santaPersentFactory.c" />
     <ClCompile Include="tomatoH.c" />
     <ClCompile Include="tomatoE.c" />
     <ClCompile Include="tsp_dfs.c" />
