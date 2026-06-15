@@ -152,7 +152,6 @@
     <ClCompile Include="hikingRoad.c" />
     <ClCompile Include="numbering.c" />
     <ClCompile Include="numSum.c" />
-    <ClCompile Include="n_queen.c" />
     <ClCompile Include="pstDFS.c" />
     <ClCompile Include="pushArray.c" />
     <ClCompile Include="rmPipe.c" />
