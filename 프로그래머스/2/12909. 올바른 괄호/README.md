@@ -1,10 +1,10 @@
 # [level 2] 올바른 괄호 - 12909 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12909) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12909?language=csharp) 
 
 ### 성능 요약
 
-메모리: 3.81 MB, 시간: 0.58 ms
+메모리: 46.7 MB, 시간: 1.63 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2025년 09월 14일 16:57:31
+2026년 09월 02일 12:36:18
 
 ### 문제 설명
 
