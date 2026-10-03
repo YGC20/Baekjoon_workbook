@@ -1,23 +1,16 @@
 #include <vector>
+#include <unordered_map>
 using namespace std;
 
 int solution(vector<int> nums)
 {
-    int n = nums.size()/2;
-
-    int cnt = 0;
-    vector<bool> check_num(200001, false);
-    for(int num : nums) {
-        if(!check_num[num]) {
-            check_num[num] = true;
-            cnt++;
-        }
-    }
-
-    if(n>cnt) {
-        return cnt;
-    }
-    else {
-        return n;
-    }
+    int len = static_cast<int>(nums.size()) / 2;
+    unordered_map<int, int> pokemons;
+    for(auto& n : nums) { pokemons[n]++; }
+    int plen = static_cast<int>(pokemons.size());
+    
+    int answer = 0;
+    if(len > plen) { answer = plen; }
+    else { answer = len; }
+    return answer;
 }
