@@ -1,24 +1,17 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
-
 using namespace std;
 
-string solution(vector<string> participant, vector<string> completion) {
+string solution(vector<string> participant, vector<string> completion)
+{
+    unordered_map<string, int> um;
+    for(auto& p : participant) { um[p]++; }
+    for(auto& c : completion) { um[c]--; }
+    
     string answer = "";
-    unordered_map<string,int> m;
-    for(auto name:participant){
-        if(m.find(name)==m.end()){
-            m.insert(make_pair(name,1));
-        }
-        else    m[name]++;
-    }
-    for(auto name:completion)   m[name]--;
-    for(auto name:participant){
-        if(m[name]>0){
-            answer+=name;
-            break;
-        }
+    for(auto& pc : um) {
+        if(pc.second != 0) { answer = pc.first; }
     }
     return answer;
 }
