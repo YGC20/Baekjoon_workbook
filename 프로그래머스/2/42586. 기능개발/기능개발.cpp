@@ -1,29 +1,33 @@
+#include <iostream>
 #include <string>
 #include <vector>
 #include <queue>
-#include <cmath>
 using namespace std;
 
-vector<int> solution(vector<int> progresses, vector<int> speeds) {
+vector<int> solution(vector<int> progresses, vector<int> speeds) 
+{
     vector<int> answer;
-    queue<int> days;
-    for(int i=0;i<progresses.size();++i){
-        days.push(ceil((100.0-progresses[i])/speeds[i]));
+    int len = static_cast<int>(progresses.size());
+    
+    queue<int> que;
+    for(int i=0; i<len; ++i) {
+        int job = ((100 - progresses[i]) / speeds[i]) + 
+            ((100 - progresses[i]) % speeds[i] == 0 ? 0 : 1);
+        que.push(job);
     }
-    int current=days.front();
-    int count=1;
-    days.pop();
-    while(!days.empty()){
-        if(days.front()<=current){
-            count++;
+    
+    int idx = 0;
+    int time = (!que.empty() ? que.front() : 0); que.pop();
+    answer.push_back(1);
+    while(!que.empty()) {
+        int curr = que.front(); que.pop();
+        if(curr > time) {
+            time = curr;
+            answer.push_back(1);
+            idx++;
+        } else {
+            answer[idx]++;
         }
-        else{
-            answer.push_back(count);
-            count=1;
-            current=days.front();
-        }
-        days.pop();
     }
-    answer.push_back(count);
     return answer;
 }
