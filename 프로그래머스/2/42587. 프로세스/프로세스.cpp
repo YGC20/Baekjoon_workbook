@@ -3,29 +3,27 @@
 #include <queue>
 using namespace std;
 
-int solution(vector<int> p_priorities, int p_location)
+int solution(vector<int> priorities, int location)
 {
+    int answer = 0;
     queue<pair<int,int>> que;
     priority_queue<int> pq;
-    for(int i=0; i<p_priorities.size(); i++) {
-        que.push({p_priorities[i], i});
-        pq.push(p_priorities[i]);
+    for(int i=0; i<static_cast<int>(priorities.size()); ++i) {
+        que.push({priorities[i], i});
+        pq.push(priorities[i]);
     }
-    int answer = 0;
+    
     while(!que.empty()) {
-        int currentP = que.front().first;
-        int currentIdx = que.front().second;
-        que.pop();
-        
-        if(currentP==pq.top()) {
+        int pri = que.front().first, loc = que.front().second;
+        int pqpri = pq.top();
+        if(pri == pqpri) {
             answer++;
+            if(loc == location) { break; }
+            que.pop();
             pq.pop();
-            if(currentIdx==p_location) {
-                break;
-            }
         }
         else {
-            que.push({currentP, currentIdx});
+            que.push(que.front()); que.pop();
         }
     }
     return answer;
