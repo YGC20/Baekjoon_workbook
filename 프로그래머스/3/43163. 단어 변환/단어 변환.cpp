@@ -1,53 +1,49 @@
-#include <iostream>
 #include <string>
 #include <vector>
 #include <algorithm>
 using namespace std;
 
-int result = 50;
-bool visited[51];
-
-bool check_diff(string a, string b)
+bool diff(const string& a, const string& b)
 {
-    int cnt = 0;
-    for(int i=0; i<a.size(); ++i) {
-        if(a[i]!=b[i]) {
-            cnt++;
-        }
+    int diffCnt = 0;
+    int n = static_cast<int>(a.size());
+    for(int i=0; i<n; ++i) {
+        if(a[i] != b[i]) { diffCnt++; }
     }
-
-    if(cnt==1) {
-        return true;
-    }
+    if(diffCnt == 1) { return true; }
     return false;
 }
 
-void dfs(string current, string target, vector<string> words, int idx)
+void changeWords(string current, string target,
+                 vector<string>& words,
+                 vector<bool>& visited,
+                 int& ans, int cnt)
 {
-    if(result<=idx) {
-        return;
-    }
-
-    if(current==target) {
-        result = min(result,idx);
-        return;
-    }
-
-    for(int i=0; i<words.size(); ++i) {
-        if(check_diff(current, words[i]) && !visited[i]) {
-            visited[i]=true;
-            dfs(words[i], target, words, idx+1);
-            visited[i]=false;
+    if(ans<=cnt) { return; }
+    if(current == target) { ans = min(ans, cnt); return; }
+    int len = static_cast<int>(words.size());
+    for(int i=0; i<len; ++i) {
+        if(diff(words[i], current) && !visited[i]) {
+            visited[i] = true;
+            changeWords(words[i], target, words, visited, ans, cnt + 1);
+            visited[i] = false;
         }
     }
 }
 
 int solution(string begin, string target, vector<string> words)
 {
-    dfs(begin, target, words, 0);
-
-    if(result==50) {
-        return 0;
+    int answer = 0;
+    bool ctk = true;
+    int len = static_cast<int>(words.size());
+    for(int i=0; i<len; ++i) {
+        if(target == words[i]) { ctk = false; break; }
     }
-    return result;
+    if(ctk) { return answer; }
+    
+    answer = len;
+    vector<bool> visited(len, false);
+    changeWords(begin, target, words, visited, answer, 0);
+    
+    return answer;
 }
