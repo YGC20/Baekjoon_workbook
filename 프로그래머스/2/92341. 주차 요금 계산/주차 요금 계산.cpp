@@ -5,38 +5,44 @@
 #include <cmath>
 using namespace std;
 
+int strToTime(string time)
+{
+    int hour = stoi(time.substr(0,2));
+    int minute = stoi(time.substr(3,2));
+    return (hour * 60 + minute);
+}
+
 vector<int> solution(vector<int> fees, vector<string> records)
 {
-    int timeFee, overTime;
-    vector<int> result;
-    map<string, int> parkTime;
-    map<string, pair<int, bool>> parking;
-    
-    for(auto& r : records) {
-        int time = stoi(r.substr(0, 2)) * 60 + stoi(r.substr(3, 2));
-        string num = r.substr(6, 4);
-        bool io = (r.substr(11) == "IN")?true:false;
+    map<string, pair<int,int>> parkingTime;
+    for(auto& rec : records) {
+        int time = strToTime(rec.substr(0,5));
+        string nums = rec.substr(6,4);
+        string status = rec.substr(11);
         
-        if(parking.find(num) == parking.end() || !parking[num].second) {
-            parking[num] = {time, io};
+        int timer;
+        if(status == "IN") {
+            timer = parkingTime[nums].first;
+            parkingTime[nums] = { timer, time };
         } else {
-            timeFee = time - parking[num].first;
-            parking[num].second = io;
-            parkTime[num] += timeFee;
+            timer = time - parkingTime[nums].second;
+            int useTime = parkingTime[nums].first + timer;
+            parkingTime[nums] = { useTime, -1 };
         }
     }
     
-    for(auto& p : parking) {
-        if(p.second.second) {
-            timeFee = 1439 - p.second.first;
-            parkTime[p.first] += timeFee;
-        }
-    }
     
-    for(auto& pt : parkTime) {
-        overTime = ((pt.second - fees[0]) < 0)?0:(pt.second - fees[0]);
-        timeFee = fees[1] + ceil(overTime / (float)(fees[2])) * fees[3];
-        result.push_back(timeFee);
+    
+    vector<int> answer;
+    for(auto& pt : parkingTime) {
+        if(pt.second.second != -1) { pt.second.first += (1439 - pt.second.second); }
+        int money = 0;
+        if(pt.second.first > fees[0]) {
+            money = fees[1] + ceil((float)(pt.second.first - fees[0]) / fees[2]) * fees[3];
+        } else {
+            money = fees[1];
+        }
+        answer.push_back(money);
     }
-    return result;
+    return answer;
 }
