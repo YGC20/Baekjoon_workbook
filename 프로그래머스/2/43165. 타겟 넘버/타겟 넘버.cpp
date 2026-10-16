@@ -2,19 +2,19 @@
 #include <vector>
 using namespace std;
 
-void dfs(vector<int>& nums, int target, int idx, int sum, int& cnt)
+void makeNum(vector<int>& numbers, int& target, int sum, int idx, int& count)
 {
-    if(idx == static_cast<int>(nums.size())) {
-        if(target == sum) { cnt++; }
+    if(idx >= static_cast<int>(numbers.size())) {
+        if(sum == target) { count++; }
         return;
     }
-    dfs(nums, target, idx+1, sum + nums[idx], cnt);
-    dfs(nums, target, idx+1, sum - nums[idx], cnt);
+    makeNum(numbers, target, sum + numbers[idx], idx + 1, count);
+    makeNum(numbers, target, sum - numbers[idx], idx + 1, count);
 }
 
 int solution(vector<int> numbers, int target)
 {
     int answer = 0;
-    dfs(numbers, target, 0, 0, answer);
+    makeNum(numbers, target, 0, 0, answer);
     return answer;
 }
